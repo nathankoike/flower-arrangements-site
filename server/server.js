@@ -14,7 +14,9 @@ app.use(
 
 // catch all
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../src/index.html"));
+  res.sendFile(
+    path.join(__dirname, "/../src/index.html"),
+    (err) => {if (err) console.log(err)});
 });
 
 app.use(express.static('./build'));
