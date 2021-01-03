@@ -1,12 +1,8 @@
 import React from "react";
-import LangButton from "./LangButton";
+import Navbar from "./Navbar";
 
 const Home = () => {
-  return (
-    <div>
-      <LangButton />
-    </div>
-  );
+  return <Navbar />;
 };
 
 export default Home;
