@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "./Button";
+import LangButton from "./LangButton";
 
 const Home = () => {
   return (
     <div>
-      <Button />
+      <LangButton />
     </div>
   );
 };

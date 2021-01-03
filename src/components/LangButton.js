@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-class Button extends React.Component {
+class LangButton extends React.Component {
   constructor(props) {
     super(props);
 
@@ -49,9 +49,6 @@ class Button extends React.Component {
       </div>
     )
   }
-  // return (
-  //   <button onClick=func>text</button>;
-  // );
 };
 
-export default Button;
+export default LangButton;
