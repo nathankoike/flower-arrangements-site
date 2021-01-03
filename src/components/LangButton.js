@@ -43,7 +43,9 @@ class LangButton extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}> {this.state.text} </button>
+        <button className="LangButton" onClick={this.handleClick}>
+          {this.state.text}
+        </button>
       </div>
     )
   }
