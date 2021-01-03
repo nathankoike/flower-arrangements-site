@@ -7,7 +7,7 @@ class Button extends React.Component {
     super(props);
 
     // a list of all supported languages
-    this.langs = ["Eng", "日本語"];
+    this.langs = ["日本語", "Eng"];
 
     // manage the state of the button
     this.state = {
