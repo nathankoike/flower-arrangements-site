@@ -1,20 +1,19 @@
 import React from "react";
 
 class LangButton extends React.Component {
+  // accepts a json object that is the state of the whole webapp
+  // this json object contains the following
+  //          langs: a list of supported languages
+  //   selectedLang: the index of the currently selected language
+  //           text: the text to display on the button
   constructor(props) {
     super(props);
 
-    // a list of all supported languages
-    this.langs = ["日本語", "Eng"];
+    // the state of the webapp
+    this.st = props.state;
 
-    // manage the state of the button
-    this.state = {
-      // the index of the currently selected lanuguage
-      selectedLang: 0,
-
-      // the index of the text to display
-      text: "日本語"
-    }
+    // a function to check that the button click is registering
+    this.check = props.check;
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -22,13 +21,13 @@ class LangButton extends React.Component {
   // update the state of the button to reflect the changes
   updateState(){
     // a function to quickly swap an index
-    let swapLang = () => (this.state.selectedLang + 1) % this.langs.length;
+    let swapLang = () => (this.st.selectedLang + 1) % this.st.langs.length;
 
     // go to the next language
     this.setState({ selectedLang: swapLang() });
 
     // update the language
-    let newText = this.langs[swapLang()];
+    let newText = this.st.langs[swapLang()];
 
     // update the language
     this.setState({
@@ -44,7 +43,7 @@ class LangButton extends React.Component {
     return (
       <div>
         <button className="LangButton" onClick={this.handleClick}>
-          {this.state.text}
+          {this.st.text}
         </button>
       </div>
     )
