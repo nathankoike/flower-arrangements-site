@@ -7,10 +7,27 @@ class Navbar extends React.Component {
 
     // the state of the whole webapp
     this.st = props.state;
+
+    this.text = {
+      home: ['Home', 'ホーム'],
+      portfolio: ['Portfolio', 'ポートフォリオ'],
+      about: ['About', 'business_nameとは？'],
+      contact: ['Contact', '会社概要']
+    };
+
+    this.state = {
+      homeText: 'Home',
+      portfolioText: 'Portfolio',
+      aboutText: 'About',
+      contactText: 'Contact'
+    };
   }
 
-  updateState(){
-    console.log(this.st.text);
+  updateState() {
+    this.setState({ homeText: this.text.home[this.st.selectedLang] });
+    this.setState({ portfolioText: this.text.portfolio[this.st.selectedLang] });
+    this.setState({ aboutText: this.text.about[this.st.selectedLang] });
+    this.setState({ contactText: this.text.contact[this.st.selectedLang] });
   }
 
   render() {
@@ -18,30 +35,30 @@ class Navbar extends React.Component {
       <div>
         <ul className="Navbar">
           <li>
-            <button className="NavbarButton" onClick={() => (location.href = "/")}>
-              Home
+            <button className="NavbarButton" onClick= {() => (location.href = "/portfolio")}>
+              { this.state.homeText }
             </button>
           </li>
 
           <li>
             <button className="NavbarButton" onClick={() => (location.href = "/portfolio")}>
-              Portfolio
+              { this.state.portfolioText }
             </button>
           </li>
 
           <li>
             <button className="NavbarButton" onClick={() => (location.href = "/about")}>
-              About
+              { this.state.aboutText }
             </button>
           </li>
 
           <li>
             <button className="NavbarButton" onClick={() => (location.href = "contact")}>
-              Contact
+              { this.state.contactText }
             </button>
           </li>
 
-          <li> <LangButton id="LangButton" state={this.st} update={this.updateState} /> </li>
+          <li> <LangButton id="LangButton" state={this.st} bar={this} /> </li>
         </ul>
       </div>
     );

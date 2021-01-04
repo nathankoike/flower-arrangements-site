@@ -14,6 +14,11 @@ app.use(
   })
 );
 
+// accept the state of the site and return relevant information
+app.post("/home", (res, req) => {
+  res.send({ test: 'success'});
+});
+
 // catch all
 app.get("*", (req, res) => {
   res.sendFile(

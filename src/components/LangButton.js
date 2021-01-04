@@ -12,10 +12,13 @@ class LangButton extends React.Component {
     // the state of the webapp
     this.st = props.state;
 
-    this.handleClick = this.handleClick.bind(this);
+    // propagate the information back up
+    this.bar = props.bar;
 
     // store the text for the button
     this.state = { text: props.state.text };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // propagate information back and change the state of the button
@@ -31,6 +34,8 @@ class LangButton extends React.Component {
 
     // update the button
     this.setState( {text: this.st.text} );
+
+    this.bar.updateState();
   }
 
   render() {

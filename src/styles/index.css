@@ -14,9 +14,9 @@ body {
 
 .NavbarButton {
   height: 5vh;
-  width: 8vw;
+  min-width: 8vw;
   margin: 0;
-  padding: 0;
+  padding: 1vw;
   background-color: #262626;
   color: #f7b2e4;
   border: none;

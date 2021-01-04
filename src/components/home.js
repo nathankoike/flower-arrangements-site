@@ -6,27 +6,25 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      langs: ["Eng", "日本語"],
-      selectedLang: 0,
-      text: "日本語"
+      langs: ["Eng", "日本語"], // the supported languages
+      selectedLang: 0, // the index of the currently selected language
+      text: "日本語", // the text on the language button
+      postId: "" // the data to be displayed
     }
   }
 
-  // send a post request to get the relevant data and render it
-  componentDidMount() {
-    // Simple POST request with a JSON body using fetch
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
-    };
-    fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
-        .then(response => response.json())
-        .then(data => this.setState({ postId: data.id }));
-  }
-
   render() {
-    return <Navbar state={this.state}/>;
+    return (
+      <div>
+        <div>
+          <Navbar state={ this.state } />
+        </div>
+
+        <div>
+          <p> { "some text here" } </p>
+        </div>
+      </div>
+    );
   }
 };
 
