@@ -16,7 +16,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <ul>
+        <ul className="Navbar">
           <li>
             <button className="NavbarButton" onClick={() => (location.href = "/")}>
               Home
@@ -41,7 +41,7 @@ class Navbar extends React.Component {
             </button>
           </li>
 
-          <li> <LangButton state={this.st} update={this.updateState} /> </li>
+          <li> <LangButton id="LangButton" state={this.st} update={this.updateState} /> </li>
         </ul>
       </div>
     );

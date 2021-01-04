@@ -12,14 +12,14 @@ class LangButton extends React.Component {
     // the state of the webapp
     this.st = props.state;
 
-    // update the text and function of the button
-    this.updateButton = props.update;
-
     this.handleClick = this.handleClick.bind(this);
+
+    // store the text for the button
+    this.state = { text: props.state.text };
   }
 
-  // update the state of the button to reflect the changes
-  updateState(){
+  // propagate information back and change the state of the button
+  handleClick(event) {
     // a function to quickly swap an index
     let swapLang = () => (this.st.selectedLang + 1) % this.st.langs.length;
 
@@ -29,18 +29,15 @@ class LangButton extends React.Component {
     // update the language
     this.st.text = this.st.langs[swapLang()];
 
-    this.updateButton();
-  }
-
-  handleClick(event) {
-    this.updateState();
+    // update the button
+    this.setState( {text: this.st.text} );
   }
 
   render() {
     return (
       <div>
         <button className="LangButton" onClick={this.handleClick}>
-          {this.st.text}
+          {this.state.text}
         </button>
       </div>
     )
