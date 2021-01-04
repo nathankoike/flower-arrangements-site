@@ -2,8 +2,6 @@ body {
   margin: 0;
 }
 
-
-
 .Navbar {
   list-style-type: none;
   margin: 0;
@@ -14,9 +12,10 @@ body {
 
 .NavbarButton {
   height: 5vh;
-  min-width: 8vw;
+  /* min-width: 8vw; */
   margin: 0;
-  padding: 1vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
   background-color: #262626;
   color: #f7b2e4;
   border: none;
