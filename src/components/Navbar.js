@@ -9,8 +9,8 @@ class Navbar extends React.Component {
     this.st = props.state;
   }
 
-  check(){
-    
+  updateState(){
+    console.log(this.st.text);
   }
 
   render() {
@@ -41,7 +41,7 @@ class Navbar extends React.Component {
             </button>
           </li>
 
-          <li> <LangButton state={this.st, this.check} /> </li>
+          <li> <LangButton state={this.st} update={this.updateState} /> </li>
         </ul>
       </div>
     );
