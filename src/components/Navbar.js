@@ -34,30 +34,34 @@ class Navbar extends React.Component {
     this.page.updateState(nextLang)
   }
 
+  changePage(path) {
+    this.page.switch(path);
+  }
+
   render() {
     return (
       <div>
         <ul className="Navbar">
           <li>
-            <button className="NavbarButton" onClick= { () => (this.page.fetchData('/home'))}>
+            <button className="NavbarButton" onClick= {() => this.changePage('/home')}>
               { this.state.homeText }
             </button>
           </li>
 
           <li>
-            <button className="NavbarButton" onClick={() => (this.page.fetchData('/portfolio'))}>
+            <button className="NavbarButton" onClick={() => (this.changePage('/portfolio'))}>
               { this.state.portfolioText }
             </button>
           </li>
 
           <li>
-            <button className="NavbarButton" onClick={() => (this.page.fetchData('/about'))}>
+            <button className="NavbarButton" onClick={() => (this.changePage('/about'))}>
               { this.state.aboutText }
             </button>
           </li>
 
           <li>
-            <button className="NavbarButton" onClick={() => (this.page.fetchData('/contact'))}>
+            <button className="NavbarButton" onClick={() => (this.changePage('/contact'))}>
               { this.state.contactText }
             </button>
           </li>

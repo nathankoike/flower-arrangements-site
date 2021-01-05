@@ -1,13 +1,22 @@
+const path = require('path');
 const fs = require('fs');
 
 // return a json object of the proper page data
-function deliver(page, pageState) {
-  console.log(pageState);
+function deliver(pageState) {
+  // store the filenames that will be loaded for each page
+  const fnames = ['en.txt', 'jp.txt'];
 
-  console.log(pageState.langs)
+  // load text data from the appropriate file
+  try {
+    const data = fs.readFileSync(
+      path.join(__dirname, './src' + pageState.path + '/' + fnames[pageState.selectedLang]),
+      'utf8');
 
-  console.log(0, pageState.langs[pageState.selectedLang])
-  return pageState.langs[pageState.selectedLang];
+    return data;
+  }
+  catch (err) {
+    console.log(err);
+  }
 }
 
 

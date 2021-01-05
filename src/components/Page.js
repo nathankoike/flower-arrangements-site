@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Langs from "../../langs.js"
 
-class Home extends React.Component {
+class Page extends React.Component {
   constructor(props) {
     super(props);
 
@@ -10,6 +10,7 @@ class Home extends React.Component {
       langs: Langs, // the supported languages
       selectedLang: 0, // the index of the currently selected language
       text: "日本語", // the text on the language button
+      path: "/home",
       page: "" // the data to be displayed
     }
   }
@@ -20,7 +21,7 @@ class Home extends React.Component {
   }
 
   // get data from the server
-  fetchData(path) {
+  fetchData() {
       // Simple POST request with a JSON body using fetch
       const requestOptions = {
           method: 'POST',
@@ -28,23 +29,31 @@ class Home extends React.Component {
           body: JSON.stringify({ pageState: this.state })
       };
 
-      fetch(path, requestOptions)
+      fetch(this.state.path, requestOptions)
           .then(response => response.json())
           .then(data => this.updatePage(data));
   }
 
+  // switch which page is being shown
+  switch(newPath) {
+    this.state.path = newPath;
+    this.fetchData();
+  }
+
   // switch the language of the page
   updateState(nextLang) {
-    console.log(nextLang, this.state.selectedLang);
-    console.log(Langs[this.state.selectedLang]);
-
     // go to the next language
-    this.setState({ selectedLang: nextLang });
+    this.state.selectedLang = nextLang;
 
     // update the language
-    this.setState({ text: this.state.langs[this.state.selectedLang] });
+    this.state.text = this.state.langs[this.state.selectedLang];
 
-    console.log(this.state.text)
+    this.fetchData();
+  }
+
+  // immediately load the page
+  componentDidMount() {
+    this.fetchData();
   }
 
   render() {
@@ -54,7 +63,7 @@ class Home extends React.Component {
           <Navbar page={this} />
         </div>
 
-        <div>
+        <div className='content'>
           <p> { this.state.page } </p>
         </div>
       </div>
@@ -62,4 +71,4 @@ class Home extends React.Component {
   }
 };
 
-export default Home;
+export default Page;

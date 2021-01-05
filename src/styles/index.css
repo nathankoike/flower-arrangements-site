@@ -1,28 +1,54 @@
 body {
   margin: 0;
+  /* background-color: #111111; */
+}
+
+.content {
+  /* box stuff */
+  margin: 0;
+  padding-left: 2vw;
+  padding-right: 2vw;
+
+  /* font stuff */
+  color: #262626;
+  font-size: 110%;
+  font-family: sans-serif;
 }
 
 .Navbar {
-  list-style-type: none;
+  /* spacing */
   margin: 0;
   padding: 0;
+
+  /* formatting and coloring */
+  list-style-type: none;
   overflow: hidden;
   background-color: #262626;
 }
 
 .NavbarButton {
-  height: 5vh;
-  /* min-width: 8vw; */
+  /* spacing */
   margin: 0;
   padding-left: 2vw;
   padding-right: 2vw;
+
+  /* sizing */
+  height: 5vh;
+
+  /* color */
   background-color: #262626;
   color: #f7b2e4;
+
+  /* formatting */
   border: none;
   display: block;
   float: left;
+
+  /* text */
   text-align: center;
   font-size: 100%;
+
+  /* cursor */
   cursor: pointer;
 }
 
@@ -32,17 +58,28 @@ body {
 }
 
 .LangButton {
-  height: 5vh;
-  width: 8vw;
+  /* spacing */
   margin: 0;
   padding: 0;
+
+  /* sizing */
+  height: 5vh;
+  width: 8vw;
+
+  /* color */
   background-color: #262626;
   color: #f7b2e4;
+
+  /* formatting */
   border: none;
   display: block;
   float: right;
+
+  /* text */
   text-align: center;
   font-size: 100%;
+
+  /* cursor */
   cursor: pointer;
 }
 

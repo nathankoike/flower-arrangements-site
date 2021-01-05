@@ -15,24 +15,9 @@ app.use(
   })
 );
 
-// accept the state of the site and return information for the home page
-app.post("/home", (req, res) => {
-  res.send({ pageData: deliver('/home', req.body.pageState)});
-});
-
-// accept the state of the site and return information for the home page
-app.post("/portfolio", (req, res) => {
-  res.send({ pageData: 'portfolio'});
-});
-
-// accept the state of the site and return information for the home page
-app.post("/about", (req, res) => {
-  res.send({ pageData: 'about'});
-});
-
-// accept the state of the site and return  information for the home page
-app.post("/contact", (req, res) => {
-  res.send({ pageData: 'contact'});
+// accept the state of the site and return relevant information
+app.post("*", (req, res) => {
+  res.send({ pageData: deliver(req.body.pageState)});
 });
 
 // catch all

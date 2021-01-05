@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./Home"
+import Page from "./Page"
 
 import {
   Route,
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <Route path="/" component={Home}></Route>
+        <Route path="/" component={Page}></Route>
       </Router>
     </div>
   );
