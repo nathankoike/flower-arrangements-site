@@ -15,8 +15,8 @@ app.use(
 );
 
 // accept the state of the site and return relevant information
-app.post("/home", (res, req) => {
-  res.send({ test: 'success'});
+app.post("/*", (req, res) => {
+  res.send({ postId: 'success'});
 });
 
 // catch all

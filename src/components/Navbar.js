@@ -8,6 +8,10 @@ class Navbar extends React.Component {
     // the state of the whole webapp
     this.st = props.state;
 
+    // the whole webapp
+    this.page = props.page;
+
+    // button text variations
     this.text = {
       home: ['Home', 'ホーム'],
       portfolio: ['Portfolio', 'ポートフォリオ'],
@@ -23,7 +27,7 @@ class Navbar extends React.Component {
     };
   }
 
-  updateState() {
+  updateState(path) {
     this.setState({ homeText: this.text.home[this.st.selectedLang] });
     this.setState({ portfolioText: this.text.portfolio[this.st.selectedLang] });
     this.setState({ aboutText: this.text.about[this.st.selectedLang] });
@@ -35,7 +39,7 @@ class Navbar extends React.Component {
       <div>
         <ul className="Navbar">
           <li>
-            <button className="NavbarButton" onClick= {() => (location.href = "/portfolio")}>
+            <button className="NavbarButton" onClick= { () => (this.page.fetchData('/home'))}>
               { this.state.homeText }
             </button>
           </li>

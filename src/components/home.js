@@ -13,15 +13,35 @@ class Home extends React.Component {
     }
   }
 
+  // update the page with new data
+  updatePage(data) {
+    console.log(data);
+    this.setState({ postId: data.postId });
+  }
+
+  // get data from the server
+  fetchData(path) {
+      // Simple POST request with a JSON body using fetch
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: 'React POST Request Example' })
+      };
+
+      fetch(path, requestOptions)
+          .then(response => response.json())
+          .then(data => this.updatePage(data));
+  }
+
   render() {
     return (
       <div>
         <div>
-          <Navbar state={ this.state } />
+          <Navbar state={ this.state } page={this} />
         </div>
 
         <div>
-          <p> { "some text here" } </p>
+          <p> { this.state.postId } </p>
         </div>
       </div>
     );
