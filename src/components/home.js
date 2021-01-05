@@ -9,14 +9,13 @@ class Home extends React.Component {
       langs: ["Eng", "日本語"], // the supported languages
       selectedLang: 0, // the index of the currently selected language
       text: "日本語", // the text on the language button
-      postId: "" // the data to be displayed
+      page: "" // the data to be displayed
     }
   }
 
   // update the page with new data
   updatePage(data) {
-    console.log(data);
-    this.setState({ postId: data.postId });
+    this.setState({ page: data.pageData });
   }
 
   // get data from the server
@@ -41,7 +40,7 @@ class Home extends React.Component {
         </div>
 
         <div>
-          <p> { this.state.postId } </p>
+          <p> { this.state.page } </p>
         </div>
       </div>
     );

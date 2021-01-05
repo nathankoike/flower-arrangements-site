@@ -45,19 +45,19 @@ class Navbar extends React.Component {
           </li>
 
           <li>
-            <button className="NavbarButton" onClick={() => (location.href = "/portfolio")}>
+            <button className="NavbarButton" onClick={() => (this.page.fetchData('/portfolio'))}>
               { this.state.portfolioText }
             </button>
           </li>
 
           <li>
-            <button className="NavbarButton" onClick={() => (location.href = "/about")}>
+            <button className="NavbarButton" onClick={() => (this.page.fetchData('/about'))}>
               { this.state.aboutText }
             </button>
           </li>
 
           <li>
-            <button className="NavbarButton" onClick={() => (location.href = "contact")}>
+            <button className="NavbarButton" onClick={() => (this.page.fetchData('/contact'))}>
               { this.state.contactText }
             </button>
           </li>
