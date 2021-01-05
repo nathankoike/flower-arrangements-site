@@ -18,26 +18,20 @@ class LangButton extends React.Component {
     this.handleEvent = this.handleEvent.bind(this);
   }
 
+  // return the index of the next language in the cycle
   swapLang() {
-    console.log(this.bar.page.state.selectedLang);
-
     return (this.bar.page.state.selectedLang + 1) % this.bar.page.state.langs.length;
   }
 
   // propagate information back and change the state of the button
   handleEvent(event) {
-    // go to the next language
-    this.bar.page.setState({ selectedLang: this.swapLang() });
-
-    // update the language
-    this.bar.page.setState({ text: this.bar.page.state.langs[this.swapLang()] });
-
     // update the button
-    this.setState( {text: this.bar.page.state.text} );
+    this.setState({
+      text: this.bar.page.state.langs[this.bar.page.state.selectedLang]
+    });
 
-    // console.log(this.bar.page.state.selectedLang, this.bar.page.state.text);
-
-    this.bar.updateState();
+    // update the navbar
+    this.bar.updateState(this.swapLang());
   }
 
   render() {

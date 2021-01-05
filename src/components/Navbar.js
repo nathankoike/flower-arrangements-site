@@ -24,14 +24,14 @@ class Navbar extends React.Component {
     };
   }
 
-  updateState(path) {
-    // create an easy way to access the page state
-    let lang = this.page.state.selectedLang;
+  updateState(nextLang) {
+    this.setState({ homeText: this.text.home[nextLang] });
+    this.setState({ portfolioText: this.text.portfolio[nextLang] });
+    this.setState({ aboutText: this.text.about[nextLang] });
+    this.setState({ contactText: this.text.contact[nextLang] });
 
-    this.setState({ homeText: this.text.home[lang] });
-    this.setState({ portfolioText: this.text.portfolio[lang] });
-    this.setState({ aboutText: this.text.about[lang] });
-    this.setState({ contactText: this.text.contact[lang] });
+    // update the page
+    this.page.updateState(nextLang)
   }
 
   render() {

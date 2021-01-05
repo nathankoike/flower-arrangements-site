@@ -33,6 +33,20 @@ class Home extends React.Component {
           .then(data => this.updatePage(data));
   }
 
+  // switch the language of the page
+  updateState(nextLang) {
+    console.log(nextLang, this.state.selectedLang);
+    console.log(Langs[this.state.selectedLang]);
+
+    // go to the next language
+    this.setState({ selectedLang: nextLang });
+
+    // update the language
+    this.setState({ text: this.state.langs[this.state.selectedLang] });
+
+    console.log(this.state.text)
+  }
+
   render() {
     return (
       <div>
