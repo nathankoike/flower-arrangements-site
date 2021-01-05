@@ -17,11 +17,25 @@ class Page extends React.Component {
 
   formatData(data) {
     console.log(data);
+
+    let imgs = data.imgs;
+
+    return (
+      <div>
+        <div>
+          <h1> { data.text } </h1>
+        </div>
+
+        <div>
+
+        </div>
+      </div>
+    )
   }
 
   // update the page with new data
   updatePage(data) {
-    this.setState(this.formatData(data.data));
+    this.setState({ page: this.formatData(data.data) });
   }
 
   // get data from the server

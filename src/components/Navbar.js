@@ -12,7 +12,7 @@ class Navbar extends React.Component {
     this.text = {
       home: ['Home', 'ホーム'],
       portfolio: ['Portfolio', 'ポートフォリオ'],
-      about: ['About', 'business_nameとは？'],
+      about: ['About', 'Kahala Roseとは？'],
       contact: ['Contact', '会社概要']
     };
 

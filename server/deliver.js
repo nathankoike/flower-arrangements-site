@@ -30,7 +30,7 @@ function deliver(pageState) {
         let ary = [];
 
         // for every file
-        for (let i = 0; i < files.length; i++){
+        for (let i = 0; i <= files.length; i++){
           // if the array has the necessary 2 pieces of data
           if (ary.length > 1){
             // add the array to our data json
