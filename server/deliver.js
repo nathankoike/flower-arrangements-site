@@ -24,17 +24,37 @@ function deliver(pageState) {
       // if there is an image subdirectory
       if (fs.existsSync(path.join(filePath, "/img"))) {
         // get all the filenames
-        fs.readdirSync(path.join(filePath, "/img")).forEach(file => {
-          // if the file is a .jpg
-          console.log(file);
-        });
+        let files = fs.readdirSync(path.join(filePath, "/img"));
+
+        // an array that will contain the image url and the accompanying text
+        let ary = [];
+
+        // for every file
+        for (let i = 0; i < files.length; i++){
+          // if the array has the necessary 2 pieces of data
+          if (ary.length > 1){
+            // add the array to our data json
+            data.imgs.push(ary);
+
+            // clear the array
+            ary = [];
+          }
+          // if the file is not a .jpg
+          if (!(/jpg/.test(files[i]))) {
+            ary.push(fs.readFileSync(
+              path.join(filePath, '/img', files[i]),
+              'utf8'));
+          }
+          // if the file is a .jpg just add its filepath
+          else ary.push(path.join(filePath, '/img', files[i]));
+        }
       }
     }
     catch(e) {
-      console.log("An error occurred.");
+      console.log(e);
     }
 
-    return data.text;
+    return data;
   }
   catch (err) {
     console.log(err);

@@ -15,9 +15,13 @@ class Page extends React.Component {
     }
   }
 
+  formatData(data) {
+    console.log(data);
+  }
+
   // update the page with new data
   updatePage(data) {
-    this.setState({ page: data.pageData });
+    this.setState(this.formatData(data.data));
   }
 
   // get data from the server
@@ -64,7 +68,7 @@ class Page extends React.Component {
         </div>
 
         <div className='content'>
-          <p> { this.state.page } </p>
+          { this.state.page }
         </div>
       </div>
     );

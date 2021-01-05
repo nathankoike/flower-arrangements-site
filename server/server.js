@@ -17,7 +17,7 @@ app.use(
 
 // accept the state of the site and return relevant information
 app.post("*", (req, res) => {
-  res.send({ pageData: deliver(req.body.pageState)});
+  res.send({ data: deliver(req.body.pageState)});
 });
 
 // catch all
