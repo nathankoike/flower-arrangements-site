@@ -17,8 +17,7 @@ app.use(
 
 // accept the state of the site and return information for the home page
 app.post("/home", (req, res) => {
-  deliver('/home', req.body);
-  res.send({ pageData: 'home'});
+  res.send({ pageData: deliver('/home', req.body.pageState)});
 });
 
 // accept the state of the site and return information for the home page

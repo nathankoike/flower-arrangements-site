@@ -1,12 +1,13 @@
 const fs = require('fs');
-const Langs = require('../langs.js');
 
 // return a json object of the proper page data
 function deliver(page, pageState) {
   console.log(pageState);
 
-  // console.log(0, Langs[lang])
-  return Langs[0];
+  console.log(pageState.langs)
+
+  console.log(0, pageState.langs[pageState.selectedLang])
+  return pageState.langs[pageState.selectedLang];
 }
 
 
