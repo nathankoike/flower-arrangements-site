@@ -5,9 +5,6 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
 
-    // the state of the whole webapp
-    this.st = props.state;
-
     // the whole webapp
     this.page = props.page;
 
@@ -28,10 +25,13 @@ class Navbar extends React.Component {
   }
 
   updateState(path) {
-    this.setState({ homeText: this.text.home[this.st.selectedLang] });
-    this.setState({ portfolioText: this.text.portfolio[this.st.selectedLang] });
-    this.setState({ aboutText: this.text.about[this.st.selectedLang] });
-    this.setState({ contactText: this.text.contact[this.st.selectedLang] });
+    // create an easy way to access the page state
+    let lang = this.page.state.selectedLang;
+
+    this.setState({ homeText: this.text.home[lang] });
+    this.setState({ portfolioText: this.text.portfolio[lang] });
+    this.setState({ aboutText: this.text.about[lang] });
+    this.setState({ contactText: this.text.contact[lang] });
   }
 
   render() {
@@ -62,7 +62,7 @@ class Navbar extends React.Component {
             </button>
           </li>
 
-          <li> <LangButton id="LangButton" state={this.st} bar={this} /> </li>
+          <li> <LangButton id="LangButton" bar={this} /> </li>
         </ul>
       </div>
     );

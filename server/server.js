@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const deliver = require("./deliver")
 
 const app = express();
 const port = 3000;
@@ -16,6 +17,7 @@ app.use(
 
 // accept the state of the site and return information for the home page
 app.post("/home", (req, res) => {
+  deliver('/home', req.body);
   res.send({ pageData: 'home'});
 });
 

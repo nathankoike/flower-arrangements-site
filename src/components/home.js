@@ -1,12 +1,13 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Langs from "../../langs.js"
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      langs: ["Eng", "日本語"], // the supported languages
+      langs: Langs, // the supported languages
       selectedLang: 0, // the index of the currently selected language
       text: "日本語", // the text on the language button
       page: "" // the data to be displayed
@@ -24,7 +25,7 @@ class Home extends React.Component {
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ title: 'React POST Request Example' })
+          body: JSON.stringify({ pageState: this.state })
       };
 
       fetch(path, requestOptions)
@@ -36,7 +37,7 @@ class Home extends React.Component {
     return (
       <div>
         <div>
-          <Navbar state={ this.state } page={this} />
+          <Navbar page={this} />
         </div>
 
         <div>

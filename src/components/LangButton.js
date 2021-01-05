@@ -9,31 +9,33 @@ class LangButton extends React.Component {
   constructor(props) {
     super(props);
 
-    // the state of the webapp
-    this.st = props.state;
-
     // propagate the information back up
     this.bar = props.bar;
 
     // store the text for the button
-    this.state = { text: props.state.text };
+    this.state = { text: props.bar.page.state.text };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleEvent = this.handleEvent.bind(this);
+  }
+
+  swapLang() {
+    console.log(this.bar.page.state.selectedLang);
+
+    return (this.bar.page.state.selectedLang + 1) % this.bar.page.state.langs.length;
   }
 
   // propagate information back and change the state of the button
-  handleClick(event) {
-    // a function to quickly swap an index
-    let swapLang = () => (this.st.selectedLang + 1) % this.st.langs.length;
-
+  handleEvent(event) {
     // go to the next language
-    this.st.selectedLang = swapLang();
+    this.bar.page.setState({ selectedLang: this.swapLang() });
 
     // update the language
-    this.st.text = this.st.langs[swapLang()];
+    this.bar.page.setState({ text: this.bar.page.state.langs[this.swapLang()] });
 
     // update the button
-    this.setState( {text: this.st.text} );
+    this.setState( {text: this.bar.page.state.text} );
+
+    // console.log(this.bar.page.state.selectedLang, this.bar.page.state.text);
 
     this.bar.updateState();
   }
@@ -41,7 +43,7 @@ class LangButton extends React.Component {
   render() {
     return (
       <div>
-        <button className="LangButton" onClick={this.handleClick}>
+        <button className="LangButton" onClick={this.handleEvent}>
           {this.state.text}
         </button>
       </div>
