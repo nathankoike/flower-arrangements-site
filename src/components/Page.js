@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-import Langs from "../../langs.js"
+import Langs from "../../langs.js";
 
 class Page extends React.Component {
   constructor(props) {
@@ -11,14 +11,29 @@ class Page extends React.Component {
       selectedLang: 0, // the index of the currently selected language
       text: "日本語", // the text on the language button
       path: "/home",
-      page: "" // the data to be displayed
+      page: null // the data to be displayed
     }
   }
 
   formatData(data) {
     console.log(data);
 
-    let imgs = data.imgs;
+    // get the images from the post response
+    let imgs = [];
+
+    let url = data.imgs[0][0].split('server')[1];
+    console.log(url);
+
+    url = (__dirname + "../../server" + url);
+
+    console.log(url);
+
+    imgs.push(<img key='0' src={ (__dirname + "../../server" + url) } />);
+
+    // data.imgs.forEach((image, i) => {
+    //   // push just the image name
+    //   imgs.push(<img key={i} src={ require(image[0]) } />);
+    // });
 
     return (
       <div>
@@ -27,7 +42,7 @@ class Page extends React.Component {
         </div>
 
         <div>
-
+          {imgs}
         </div>
       </div>
     )

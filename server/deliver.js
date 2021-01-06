@@ -8,7 +8,7 @@ function deliver(pageState) {
 
   const filePath = path.join(
     __dirname,
-    './src' + pageState.path + '/');
+    '../imgs' + pageState.path + '/');
 
   // all the data to send back
   let data = { imgs: [] };
@@ -41,9 +41,13 @@ function deliver(pageState) {
           }
           // if the file is not a .jpg
           if (!(/jpg/.test(files[i]))) {
-            ary.push(fs.readFileSync(
+            // read the text from the file and split it on newlines
+            let imgTxt = fs.readFileSync(
               path.join(filePath, '/img', files[i]),
-              'utf8'));
+              'utf8').split('\n');
+
+            // push the text array to the main array
+            ary.push(imgTxt);
           }
           // if the file is a .jpg just add its filepath
           else ary.push(path.join(filePath, '/img', files[i]));
