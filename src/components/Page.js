@@ -21,14 +21,14 @@ class Page extends React.Component {
     // get the images from the post response
     let imgs = [];
 
-    let url = data.imgs[0][0].split('server')[1];
-    console.log(url);
+    // only load images if there are images to load
+    try {
+      let url = data.imgs[0][0];
 
-    url = (__dirname + "../../server" + url);
+      console.log(url);
 
-    console.log(url);
-
-    imgs.push(<img key='0' src={ (__dirname + "../../server" + url) } />);
+      imgs.push(<img key='0' src={ url } />);
+    } catch (e) {}
 
     // data.imgs.forEach((image, i) => {
     //   // push just the image name

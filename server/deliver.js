@@ -3,12 +3,14 @@ const fs = require('fs');
 
 // return a json object of the proper page data
 function deliver(pageState) {
+
   // store the filenames that will be loaded for each page
   const fnames = ['en.txt', 'jp.txt'];
 
   const filePath = path.join(
     __dirname,
-    '../imgs' + pageState.path + '/');
+    '../src',
+    pageState.path);
 
   // all the data to send back
   let data = { imgs: [] };
@@ -41,10 +43,12 @@ function deliver(pageState) {
           }
           // if the file is not a .jpg
           if (!(/jpg/.test(files[i]))) {
+            let fname = path.join(filePath, '/img', files[i]);
+
             // read the text from the file and split it on newlines
-            let imgTxt = fs.readFileSync(
-              path.join(filePath, '/img', files[i]),
-              'utf8').split('\n');
+            let imgTxt = fs.readFileSync(fname, 'utf8');
+            // imgTxt = imgTxt.split('\n');
+            console.log(imgTxt);
 
             // push the text array to the main array
             ary.push(imgTxt);
@@ -56,7 +60,10 @@ function deliver(pageState) {
     }
     catch(e) {
       console.log(e);
+      console.log("error");
     }
+
+    console.log(data);
 
     return data;
   }
